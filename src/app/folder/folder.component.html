@@ -1,0 +1,15 @@
+<div
+  class="p-2 m-2 text-center border"
+  *ngFor="let folder of folders; let indexFolder = index"
+  (click)="viewFolder(indexFolder)"
+  [class.selected]="indexFolder === selectedFolder"
+>
+  {{ folder }}
+  <div 
+    *ngFor="let file of getFiles(folder); let i = index"
+    class="mt-2"
+    (click)="viewImage(file.id)"
+  >
+    <img [src]="file.image" class="image" [class.selected]="file.id === selectedImage">
+  </div>
+</div>

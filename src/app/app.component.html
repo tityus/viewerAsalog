@@ -1,0 +1,66 @@
+<!-- import navbar component -->
+<app-navbar
+  (zoomInEvent)="receiveZoomIn()"
+  (zoomOutEvent)="receiveZoomOut()"
+  (saveEvent)="receiveSave()"
+></app-navbar>
+
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-sm-1 bg-light pt-3 px-2 border-right">
+      <button type="button" class="btn" (click)="open(content)">
+        <i class="material-icons md-36">create_new_folder</i>
+      </button>
+      <label for="upload">
+        <div class="btn" role="button">
+            <i class="material-icons md-36">attachment</i>
+        </div>
+      </label>
+      <input
+        id="upload"
+        type="file"
+        accept="image/*"
+        (change)="onFileChange($event)"
+      />
+    </div>
+    <div class="col-sm-2 border-right">
+      <app-folder
+        [foldersList]="foldersList"
+        [filesList]="files"
+        (viewImageEvent)="receiveShowImage($event)"
+        (selectedFolderEvent)="receiveSelectedFolder($event)"
+      ></app-folder>
+    </div>
+    <div class="col-sm">
+      <app-picture
+        [viewer]="viewer"
+        [eventsZoomIn]="eventsZoomIn.asObservable()"
+        [eventsZoomOut]="eventsZoomOut.asObservable()"
+        [eventsSave]="eventsSave.asObservable()"
+        (fileSavedEvent)="receiveFileSaved($event)"
+      ></app-picture>
+    </div>
+  </div>
+</div>
+
+<!-- Modal create folder -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Nouveau dossier</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Nom du dossier" #folder>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(folder.value)">Save</button>
+  </div>
+</ng-template>

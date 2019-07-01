@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Explorateur de fichiers</span>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="material-icons navlink" (click)="sendSave()">save</i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="sendZoomIn()">
+          <i class="material-icons navlink">zoom_in</i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="sendZoomOut()">
+          <i class="material-icons navlink">zoom_out</i>
+        </a>
+      </li>
+      <!-- next feat -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="material-icons">settings</i>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</nav>

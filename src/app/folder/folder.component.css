@@ -1,0 +1,7 @@
+.image {
+  width: 100px;
+}
+
+.selected {
+  border: 1px solid black !important;
+}
